@@ -7,7 +7,12 @@
 
 import SwiftUI
 
-struct ContentView: View {    
+struct ContentView: View {
+    
+    init() {
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
+    }
+    
     var body: some View {
         NavigationView {
             ZStack {
