@@ -7,10 +7,44 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ContentView: View {    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            ZStack {
+                Color("Background")
+                    .ignoresSafeArea()
+                
+                ScrollView {
+                    VStack(spacing: 0) {
+                        // MARK: Thermometer
+                        ThermometerView()
+                            .padding(.top, 30)
+                            .padding(.bottom, 60)
+                        // MARK: Smart Systems
+                        
+                        HStack(spacing: 20) {
+                            // MARK: Humidity Card
+                            ClimateCard(
+                                iconName: "humidity.fill",
+                                index: "Inside Humidity",
+                                measure: "%49"
+                            )
+                            
+                            // MARK: Temperature Card
+                            ClimateCard(
+                                iconName: "thermometer",
+                                index: "Outside Temp.",
+                                measure: "-10°"
+                            )
+                        }
+                    }
+                }
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("Thermostat")
+            
+        }
+        .navigationViewStyle(.stack)
     }
 }
 
